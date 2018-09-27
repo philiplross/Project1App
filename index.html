@@ -40,8 +40,11 @@
             <a class="nav-link js-scroll-trigger" href="#areaTwo">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#areaThree">section three</a>
+            <a class="nav-link js-scroll-trigger" href="#areaThree">Artist Results</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#areaFour">Spotify songs</a>
+            </li>
         </ul>
       </div>
     </div>
@@ -50,15 +53,15 @@
   <header class="bg-primary text-white">
     <div class="container text-center">
       <br><br>
-      <h1 class="display-1">Welcome to Rock Out</h1>
+      <h1 class="display-1" id="areaOne">Welcome to Rock Out</h1>
       <!-- <p class="lead">Welcome to RockOut</p> -->
     </div>
   </header>
 
   <section >
-    <div class="container" id="areaOne">
+    <div class="container" >
       <div class="row">
-        <div class="col-lg-8 mx-auto">
+        <div class="col-lg-8 mx-auto" >
           <h2>What is RockOut?</h2>
           <p class="lead">RockOut is a web app designed for search for bands and artist, and getting information from
             everything from Concerts in that area to tickets and concert info. The app also gives you Music to listen
@@ -81,8 +84,8 @@
 
     <div class="container" id="areaTwo">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Search & Artist and City</h2>
+        <div class="col-lg-8 mx-auto" id="areaTwo">
+          <h2 >Search  Artist & City</h2>
           <p class="lead">Just search for the artist your intrested in, and the city you are looking in, and let us do the rest!</p>
           <form>
             <div class="form-group">
@@ -168,104 +171,7 @@
                   <div class="inner-circle"></div>
                 </div>
               </div>
-              <script>
-
-
-                const app = {};
-
-                app.getArists = (artist) => $.ajax({
-                  url: 'https://api.spotify.com/v1/search',
-                  method: 'GET',
-                  dataType: 'json',
-                  //headers: 'auth token you get from spotify
-                  // https://github.com/spotify/web-api-auth-examples/blob/master/authorization_code/app.js#L76
-                  // redirect-uri is your localhost server address
-                  data: {
-                    type: 'artist',
-                    q: artist
-                  }
-                });
-
-                app.getAristsAlbums = (id) => $.ajax({
-                  url: `https://api.spotify.com/v1/artists/${id}/albums`,
-                  method: 'GET',
-                  dataType: 'json',
-                  data: {
-                    album_type: 'album',
-                  }
-                });
-
-                app.getAlbumTracks = (id) => $.ajax({
-                  url: `https://api.spotify.com/v1/albums/${id}/tracks`,
-                  method: 'GET',
-                  dataType: 'json'
-                });
-
-                app.getAlbums = function (artists) {
-                  let albums = artists.map(artist => app.getAristsAlbums(artist.id));
-                  $.when(...albums)
-                    .then((...albums) => {
-                      let albumIds = albums
-                        .map(a => a[0].items)
-                        .reduce((prev, curr) => [...prev, ...curr], [])
-                        .map(album => app.getAlbumTracks(album.id));
-
-                      app.getTracks(albumIds);
-                    });
-                };
-
-                app.getTracks = function (tracks) {
-                  $.when(...tracks)
-                    .then((...tracks) => {
-                      tracks = tracks
-                        .map(getDataObject)
-                        .reduce((prev, curr) => [...prev, ...curr], []);
-                      const randomPlayList = getRandomTracks(30, tracks);
-                      app.createPlayList(randomPlayList);
-                    })
-                };
-
-                app.createPlayList = function (songs) {
-                  const baseUrl = 'https://embed.spotify.com/?theme=white&uri=spotify:trackset:My Playlist:';
-                  songs = songs.map(song => song.id).join(',');
-                  $('.loader').removeClass('show');
-                  $('.playlist').append(`<iframe src="${baseUrl + songs}" height="400"></iframe>`);
-                }
-
-                app.init = function () {
-                  $('form').on('submit', function (e) {
-                    e.preventDefault();
-                    let artists = $('input[type=search]').val();
-                    $('.loader').addClass('show');
-                    artists = artists
-                      .split(',')
-                      .map(app.getArists);
-
-                    $.when(...artists)
-                      .then((...artists) => {
-                        artists = artists.map(a => a[0].artists.items[0]);
-                        console.log(artists);
-                        app.getAlbums(artists);
-                      });
-                  });
-
-                }
-
-                const getDataObject = arr => arr[0].items;
-
-                function getRandomTracks(num, tracks) {
-                  const randomResults = [];
-                  for (let i = 0; i < num; i++) {
-                    randomResults.push(tracks[Math.floor(Math.random() * tracks.length)])
-                  }
-                  return randomResults;
-                }
-
-                //Uncaught ReferenceError: $ is not defined at script2.js:89
-                $(app.init);
-
-
-              </script>
+              
 
             </section>
 
@@ -287,9 +193,11 @@
     <!-- /.container -->
   </footer>
 
+<script src="spotify.js"></script>
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-  <script>
+  <!-- <script>
 
     (function ($) {
       "use strict"; // Start of use strict
@@ -321,7 +229,7 @@
 
     })(jQuery); // End of use strict
 
-  </script>
+  </script> -->
 
 </body>
 
