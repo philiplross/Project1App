@@ -13,7 +13,7 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 
@@ -25,7 +25,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Group project</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">RockOut</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,8 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#areaOne">About</a>
+            
+            <a class="nav-link js-scroll-trigger" href="#areaOne" >About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#areaTwo">Search</a>
@@ -54,12 +55,15 @@
     </div>
   </header>
 
-  <section id="areaOne">
-    <div class="container">
+  <section >
+    <div class="container" id="areaOne">
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2>What is RockOut?</h2>
-          <p class="lead">RockOut is a web app designed for search for bands and artist, and getting information from everything from Concerts in that area to tickets and concert info. The app also gives you Music to listen to by that artist to discover their music, or even listen to your fav's. RockOut is your one stop for all artist info.</p>
+          <p class="lead">RockOut is a web app designed for search for bands and artist, and getting information from
+            everything from Concerts in that area to tickets and concert info. The app also gives you Music to listen
+            to by that artist to discover their music, or even listen to your fav's. RockOut is your one stop for all
+            artist info.</p>
           <!-- <ul>
             <li>line 1</li>
             <li>line 2</li>
@@ -72,14 +76,14 @@
   </section>
 
 
-  <section id="areaTwo" class="bg-light">
+  <section  class="bg-light">
     <br><br>
 
-    <div class="container">
+    <div class="container" id="areaTwo">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>section 2</h2>
-          <p class="lead">This section is where ypu input a forum and search the band or music you wanna search.</p>
+          <h2>Search & Artist and City</h2>
+          <p class="lead">Just search for the artist your intrested in, and the city you are looking in, and let us do the rest!</p>
           <form>
             <div class="form-group">
               <label for="searchInput1">Band or Artist to search</label>
@@ -96,12 +100,12 @@
     </div>
   </section>
 
-  <section id="areaThree">
-    <div class="container">
+  <section >
+    <div class="container" id="areaThree">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>section 3</h2>
-          <p class="lead">This section will be made of tables data with list results from the search</p>
+          <h2 class="text-center">Artist, Concert, Venue, & Ticket info</h2>
+          <p class="lead text-center">Here are your results with all the folling information</p>
 
           <table class="table">
             <thead>
@@ -115,11 +119,11 @@
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>1/1/2018</td>
-                <td>Soma</td>
-                <td>Click Here</td>
+                <td id="dateAppend">_</td>
+                <td id="venueAppend">_</td>
+                <td id="ticketAppend">_</td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <th scope="row">2</th>
                 <td>1/1/2018</td>
                 <td>Stapes Center</td>
@@ -130,7 +134,7 @@
                 <td>1/1/2018</td>
                 <td>SDSU</td>
                 <td>Click Herer</td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
 
@@ -146,7 +150,126 @@
         <div class="col-lg-8 mx-auto">
           <div id="SpotifyInsert">
 
-            Populate Spotify Section Here
+            <section>
+
+              <br><br>
+              <div class="form text-center">
+                <!--Failed to load resource: net::ERR_FILE_NOT_FOUND-->
+                <!-- <img src="note.svg" alt=""> -->
+                <form action="">
+                  <input type="search" value="">
+                  <input type="submit" value="Create">
+                </form>
+                <br>
+                <p>The Cloud Jukebox project - Spotify Playlist Generator</p>
+              </div>
+              <div class="playlist">
+                <div class="loader">
+                  <div class="inner-circle"></div>
+                </div>
+              </div>
+              <script>
+
+
+                const app = {};
+
+                app.getArists = (artist) => $.ajax({
+                  url: 'https://api.spotify.com/v1/search',
+                  method: 'GET',
+                  dataType: 'json',
+                  //headers: 'auth token you get from spotify
+                  // https://github.com/spotify/web-api-auth-examples/blob/master/authorization_code/app.js#L76
+                  // redirect-uri is your localhost server address
+                  data: {
+                    type: 'artist',
+                    q: artist
+                  }
+                });
+
+                app.getAristsAlbums = (id) => $.ajax({
+                  url: `https://api.spotify.com/v1/artists/${id}/albums`,
+                  method: 'GET',
+                  dataType: 'json',
+                  data: {
+                    album_type: 'album',
+                  }
+                });
+
+                app.getAlbumTracks = (id) => $.ajax({
+                  url: `https://api.spotify.com/v1/albums/${id}/tracks`,
+                  method: 'GET',
+                  dataType: 'json'
+                });
+
+                app.getAlbums = function (artists) {
+                  let albums = artists.map(artist => app.getAristsAlbums(artist.id));
+                  $.when(...albums)
+                    .then((...albums) => {
+                      let albumIds = albums
+                        .map(a => a[0].items)
+                        .reduce((prev, curr) => [...prev, ...curr], [])
+                        .map(album => app.getAlbumTracks(album.id));
+
+                      app.getTracks(albumIds);
+                    });
+                };
+
+                app.getTracks = function (tracks) {
+                  $.when(...tracks)
+                    .then((...tracks) => {
+                      tracks = tracks
+                        .map(getDataObject)
+                        .reduce((prev, curr) => [...prev, ...curr], []);
+                      const randomPlayList = getRandomTracks(30, tracks);
+                      app.createPlayList(randomPlayList);
+                    })
+                };
+
+                app.createPlayList = function (songs) {
+                  const baseUrl = 'https://embed.spotify.com/?theme=white&uri=spotify:trackset:My Playlist:';
+                  songs = songs.map(song => song.id).join(',');
+                  $('.loader').removeClass('show');
+                  $('.playlist').append(`<iframe src="${baseUrl + songs}" height="400"></iframe>`);
+                }
+
+                app.init = function () {
+                  $('form').on('submit', function (e) {
+                    e.preventDefault();
+                    let artists = $('input[type=search]').val();
+                    $('.loader').addClass('show');
+                    artists = artists
+                      .split(',')
+                      .map(app.getArists);
+
+                    $.when(...artists)
+                      .then((...artists) => {
+                        artists = artists.map(a => a[0].artists.items[0]);
+                        console.log(artists);
+                        app.getAlbums(artists);
+                      });
+                  });
+
+                }
+
+                const getDataObject = arr => arr[0].items;
+
+                function getRandomTracks(num, tracks) {
+                  const randomResults = [];
+                  for (let i = 0; i < num; i++) {
+                    randomResults.push(tracks[Math.floor(Math.random() * tracks.length)])
+                  }
+                  return randomResults;
+                }
+
+                //Uncaught ReferenceError: $ is not defined at script2.js:89
+                $(app.init);
+
+
+              </script>
+
+            </section>
+
+
           </div>
 
 
@@ -159,46 +282,46 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Our Group Project</p>
+      <p class="m-0 text-center text-white">RockOut 2018</p>
     </div>
     <!-- /.container -->
   </footer>
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-<script>
+  <script>
 
-(function($) {
-  "use strict"; // Start of use strict
+    (function ($) {
+      "use strict"; // Start of use strict
 
-  // Smooth scrolling using jQuery easing
-  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: (target.offset().top - 54)
-        }, 1000, "easeInOutExpo");
-        return false;
-      }
-    }
-  });
+      // Smooth scrolling using jQuery easing
+      $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          if (target.length) {
+            $('html, body').animate({
+              scrollTop: (target.offset().top - 54)
+            }, 1000, "easeInOutExpo");
+            return false;
+          }
+        }
+      });
 
-  // Closes responsive menu when a scroll trigger link is clicked
-  $('.js-scroll-trigger').click(function() {
-    $('.navbar-collapse').collapse('hide');
-  });
+      // Closes responsive menu when a scroll trigger link is clicked
+      $('.js-scroll-trigger').click(function () {
+        $('.navbar-collapse').collapse('hide');
+      });
 
-  // Activate scrollspy to add active class to navbar items on scroll
-  $('body').scrollspy({
-    target: '#mainNav',
-    offset: 54
-  });
+      // Activate scrollspy to add active class to navbar items on scroll
+      $('body').scrollspy({
+        target: '#mainNav',
+        offset: 54
+      });
 
-})(jQuery); // End of use strict
+    })(jQuery); // End of use strict
 
-</script>
+  </script>
 
 </body>
 
