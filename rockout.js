@@ -27,3 +27,10 @@
   });
 
 })(jQuery); // End of use strict
+
+var searchInput [];
+$("#searchInput1").val(searchInput);
+console.log(searchInput)
+
+
+$()
