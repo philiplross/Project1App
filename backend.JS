@@ -1,14 +1,27 @@
 //api key for song kick
-//eXBGBqHJ9N9zfC95
+var apiKey = "eXBGBqHJ9N9zfC95";
 
-var getUrl = https://api.songkick.com/api/3.0/artists/{artist_id}/gigography.json?apikey={eXBGBqHJ9N9zfC95}
+var artistId = "379603"
+var getUrl = "https://api.songkick.com/api/3.0/artists/" + artistId + "/gigography.json?apikey=" + apiKey;
 
 //ajax with firebase to call soundkick database
 
-$.getJSON("https://api.songkick.com/api/3.0/events.json?location=clientip&apikey={your_api_key}&jsoncallback=?",
-  function(data) {
-    // data is JSON response object
+$.ajax({
+    url: getUrl,
+    method: "Get"
+  }).done(function(apiResponse) {
+    //$( this ).addClass( "done" );
+    console.log(apiResponse);
   });
+
+  {
+"apiResponse": {resultspage},
+
+
+  }
+
+  .then(function(response))
+apiResponse {}
 
 function get_User_Data(User_ID) {
     var gotUserData = $.Deferred();
@@ -20,8 +33,8 @@ function get_User_Data(User_ID) {
         url: DataLocation + '/USERS/' + User_ID + '.json',
         type: "GET",
 
-        success: function(data) {
-            if(data != null) {
+        success: function (data) {
+            if (data != null) {
                 userData = data;
                 // console.log(userData);
                 userName = data['Username'];
