@@ -1,42 +1,58 @@
 //api key for song kick
-//eXBGBqHJ9N9zfC95
+var apiKey = "eXBGBqHJ9N9zfC95";
 
-var getUrl = https://api.songkick.com/api/3.0/artists/{artist_id}/gigography.json?apikey={eXBGBqHJ9N9zfC95}
+var artistId = "379603"
+var getUrl = "https://api.songkick.com/api/3.0/artists/" + artistId + "/gigography.json?apikey=" + apiKey;
 
 //ajax with firebase to call soundkick database
 
-$.getJSON("https://api.songkick.com/api/3.0/events.json?location=clientip&apikey={your_api_key}&jsoncallback=?",
-  function(data) {
-    // data is JSON response object
-  });
+$.ajax({
+    url: getUrl,
+    method: "Get"
+}).done(function (apiResponse) {
+    //$( this ).addClass( "done" );
+    var results = apiResponse.resultsPage.results.event;
+    var mostRecent = results.slice(results.length - 11, results.length - 1)
 
-function get_User_Data(User_ID) {
-    var gotUserData = $.Deferred();
+    for (var i = 0; i <mostRecent.length; i++) {
+        console.log(mostRecent[i].start.date);
+    }
+});
 
-    var userName, userLastCheckIn;
+// {
+//"resultsPage": {
+//"results": {
+//"type": [Array of response objects]
+//},
+// "totalEntries":10,
+//"perPage":10,
+//"page":1,
+//"status":"ok"
+//}
+// }
 
-    $.ajax({
-        dataType: "json",
-        url: DataLocation + '/USERS/' + User_ID + '.json',
-        type: "GET",
-
-        success: function(data) {
-            if(data != null) {
-                userData = data;
-                // console.log(userData);
-                userName = data['Username'];
-                userLastCheckIn = data['CheckIn'];
-            }
-        },
-
-    }).always(function () {
-        userInfo = [userName, userLastCheckIn];
-        gotUserData.resolve();
-    });
-
-    return $.Deferred(function (def) {
-        $.when(gotUserData).done(function () {
-            def.resolve();
-        });
-    });
-}
+//  {
+//    "resultsPage": {
+//      "results": {
+//         "type": [
+//           {
+//             "displayName": "Artist",
+//             "id": 379603,
+//             "identifier": [
+//               {
+//                 "eventsHref": "http://api.songkick.com/api/3.0/artists/mbid:e21857d5-3256-4547-afb3-4b6ded592596/calendar.json",
+//                 "href": "http://api.songkick.com/api/3.0/artists/mbid:e21857d5-3256-4547-afb3-4b6ded592596.json",
+//                 "mbid": "e21857d5-3256-4547-afb3-4b6ded592596"
+//               }
+//             ],
+//             "onTourUntil": null,
+//             "uri": "http://www.songkick.com/artists/68043-gorillaz?utm_source=1976&utm_medium=partner"
+//           }
+//         ]
+//       },
+//       "status": "ok",
+//       "perPage": 10,
+//       "page": 1,
+//       "totalEntries": 10
+//     }
+//   }
