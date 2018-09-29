@@ -1,0 +1,90 @@
+body {
+    background-color: #EEE;
+    font-family: Helvetica, Arial, sans-serif;
+}
+a {
+    text-decoration: none;
+    color: red;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+#container {
+    background-color: white;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#header {
+    background-image: url("../images/back.gif");
+    color: white;
+    text-align: center;
+    padding: 10px;
+
+}
+#content {
+    padding: 10px 10px 10px 10px;
+
+}
+#nav {
+    width: 180px;
+    float: left;
+}
+
+#btnDiv {
+    height:20px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:50%; 
+}
+
+quesDiv {
+    width: 600px;
+    float: left;
+    color: yellow;
+   /*background-image: url("../images/bluewave.gif");*/
+   background-color: darkgreen;
+}
+#nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#nav .selected {
+    font-weight: bold;
+}
+button {
+    margin-top: 20px;
+    line-height: 60px;
+    font-weight: bold;
+    padding: 0 40px;
+    background: salmon;
+    border: none;
+  }
+#main {
+    width: 600px;
+    float: right;
+    color: yellow;
+   /*background-image: url("../images/bluewave.gif");*/
+   background-color: darkgreen;
+
+}
+#first {
+    width: 600px;
+    float: right;
+    color: white;
+    text-align: center;
+    background-color: #999999;
+}
+#footer {
+    clear: both;
+    padding: 10px;
+    background-color: #999999;
+    color: white;
+    text-align: right;
+}
