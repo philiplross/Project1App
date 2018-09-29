@@ -1,8 +1,11 @@
 //api key for song kick
 var apiKey = "eXBGBqHJ9N9zfC95";
 
-var artistId = "379603"
+var artistId = "2489666"
 var getUrl = "https://api.songkick.com/api/3.0/artists/" + artistId + "/gigography.json?apikey=" + apiKey;
+
+<a href="/search?page=1&amp;per_page=10&amp;query=awolnation&amp;type=upcoming">Upcoming events</a>
+https://api.songkick.com/api/3.0/artists/{artist_id}/calendar.json?apikey={your_api_key}
 
 //ajax with firebase to call soundkick database
 
@@ -10,13 +13,15 @@ $.ajax({
     url: getUrl,
     method: "Get"
 }).done(function (apiResponse) {
-    //$( this ).addClass( "done" );
-    var results = apiResponse.resultsPage.results.event;
-    var mostRecent = results.slice(results.length - 11, results.length - 1)
+    //var results = apiResponse.resultsPage.results.event;
+    var results = apiResponse;
+   // var mostRecent = results.slice(results.length - 11, results.length - 1)
 
-    for (var i = 0; i <mostRecent.length; i++) {
-        console.log(mostRecent[i].start.date);
-    }
+    //for (var i = 0; i <mostRecent.length; i++) {
+      //  console.log(mostRecent[i].start.date);
+   // }
+
+   console.log(apiResponse);
 });
 
 // {
