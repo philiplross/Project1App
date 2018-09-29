@@ -1,13 +1,4 @@
-// Title: Timestamp picker
-// Description: See the demo at url
-// URL: http://us.geocities.com/tspicker/
-// Script featured on: http://javascriptkit.com/script/script2/timestamp.shtml
-// Version: 1.0
-// Date: 12-05-2001 (mm-dd-yyyy)
-// Author: Denis Gritcyuk <denis@softcomplex.com>; <tspicker@yahoo.com>
-// Notes: Permission given to use this script in any kind of applications if
-//    header lines are left unchanged. Feel free to contact the author
-//    for feature requests and/or donations
+
 
 function show_calendar(str_target, str_datetime) {
 	var arr_months = ["January", "February", "March", "April", "May", "June",
