@@ -1,90 +1,71 @@
 body {
-    background-color: #EEE;
+    background-color: lightblue;
     font-family: Helvetica, Arial, sans-serif;
 }
-a {
-    text-decoration: none;
-    color: red;
-}
-
-h1, h2, h3 {
-    margin: 0;
-}
-
 #container {
-    background-color: white;
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-
+    background-color: lightblue;
 }
-#header {
-    background-image: url("../images/back.gif");
-    color: white;
-    text-align: center;
-    padding: 10px;
 
+#section {
+    background-color: lightblue;
 }
-#content {
-    padding: 10px 10px 10px 10px;
 
+.section {
+    background-color: lightblue;
 }
-#nav {
-    width: 180px;
+
+#mainNav {
+    width: 100%;
     float: left;
+    color: rgba(226, 226, 152, 0.1);
+    text-align: left;
+    background-color: transparent;
 }
 
-#btnDiv {
-    height:20px; 
-    width:100px; 
-    margin: -20px -50px; 
-    position:relative;
-    top:50%; 
-    left:50%; 
+#navbarResponsive {
+    color: rgba(226, 226, 152, 0.1);
 }
 
-quesDiv {
-    width: 600px;
-    float: left;
-    color: yellow;
-   /*background-image: url("../images/bluewave.gif");*/
-   background-color: darkgreen;
-}
-#nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#nav .selected {
-    font-weight: bold;
-}
-button {
-    margin-top: 20px;
-    line-height: 60px;
-    font-weight: bold;
-    padding: 0 40px;
-    background: salmon;
-    border: none;
-  }
-#main {
-    width: 600px;
-    float: right;
-    color: yellow;
-   /*background-image: url("../images/bluewave.gif");*/
-   background-color: darkgreen;
+#areaOne {
+    color:rgb(226, 226, 152);
+    background-color: transparent;
+    text-size-adjust: auto;
 
 }
-#first {
-    width: 600px;
-    float: right;
-    color: white;
-    text-align: center;
-    background-color: #999999;
+
+#whatIs {
+    color: rgb(226, 226, 152);
+    /*color: white;*/
+    background-color: rgba(170, 165, 165,0.5);
 }
-#footer {
-    clear: both;
-    padding: 10px;
-    background-color: #999999;
-    color: white;
-    text-align: right;
+
+#areaTwo {
+    color: rgb(226, 226, 152);
+    background-color: transparent;
 }
+
+#areaThree {
+    color: rgb(226, 226, 152);
+    background-color: grey;
+}
+
+#areaFour {
+    color: rgb(226, 226, 152);
+    background-color: transparent;
+}
+
+
+#searchInput1 {
+    color: black;
+    background-color: rgb(226, 226, 152);
+}
+
+#exampleFormControlSelect1 {
+    color: grey;
+    background-color: transparent;
+}
+
+
+
+
+
