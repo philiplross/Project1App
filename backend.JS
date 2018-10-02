@@ -1,28 +1,51 @@
+function songkickGo (artistId = 'awolnation')
+
 //api key for song kick
 var apiKey = "eXBGBqHJ9N9zfC95";
 
 var artistId = "2489666"
-var getUrl = "https://api.songkick.com/api/3.0/artists/" + artistId + "/gigography.json?apikey=" + apiKey;
+var getUrl = "https://api.songkick.com/api/3.0/artists/" + artistId + "/gigography.json?apikey=" + apiKey + "&order=desc";
 
-<a href="/search?page=1&amp;per_page=10&amp;query=awolnation&amp;type=upcoming">Upcoming events</a>
-https://api.songkick.com/api/3.0/artists/{artist_id}/calendar.json?apikey={your_api_key}
 
-//ajax with firebase to call soundkick database
 
 $.ajax({
     url: getUrl,
     method: "Get"
 }).done(function (apiResponse) {
-    //var results = apiResponse.resultsPage.results.event;
+    var results = apiResponse.resultsPage.results.event;
     var results = apiResponse;
    // var mostRecent = results.slice(results.length - 11, results.length - 1)
+    var mostRecent = results.fullLength;
+for(i=0; i<results.length; i++) {
+    $('.songkickTable').append('')
+}
 
     //for (var i = 0; i <mostRecent.length; i++) {
-      //  console.log(mostRecent[i].start.date);
-   // }
+    console.log(mostRecent[i].start.date);
+   }
 
    console.log(apiResponse);
 });
+
+var movie = "The Little Mermaid";
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+    .then(function(response) {
+      var tBody = $("tbody");
+      var tRow = $("<tr>");
+      // Methods run on jQuery selectors return the selector they we run on
+      // This is why we can create and save a reference to a td in the same statement we update its text
+      var titleTd = $("<td>").text(response.Title);
+      var yearTd = $("<td>").text(response.Year);
+      var actorsTd = $("<td>").text(response.Actors);
+      // Append the newly created table data to the table row
+      tRow.append(titleTd, yearTd, actorsTd);
+      // Append the table row to the table body
+      tBody.append(tRow);
+    });
 
 // {
 //"resultsPage": {
