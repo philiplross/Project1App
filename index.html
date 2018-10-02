@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/stylea.css" />
 </head>
-
 
 
 <!---->
@@ -34,7 +34,9 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-
+              <img src="assets/images/juke.dms" width="40" height="40">
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#areaOne">About</a>
           </li>
           <li class="nav-item">
@@ -54,7 +56,7 @@
   <header class="bg-primary text-white">
     <div class="container text-center">
       <br><br>
-      <h1 class="display-1 text-white" id="areaOne">Welcome to Rock Out</h1>
+      <h1 id="areaOne">Welcome to Rock Out</h1>
 
     </div>
   </header>
@@ -71,17 +73,14 @@
 
 
           <br><br>
-          <h2 class="text-white">What is RockOut?</h2>
-          <div class="well well-lg">
-         
+          
+          <div class="well well-lg" id="whatIs">
+         <h2>What is RockOut?</h2>
 
-          <h3 class="lead text-white">RockOut is a web app designed for search for bands and artist, and getting
-            information from
-            everything from Concerts in that area to tickets and concert info. The app also gives you Music to listen
-            to by that artist to discover their music, or even listen to your fav's. RockOut is your one stop for all
-            artist info.</h3>
-
-
+          <h3>RockOut is a web app designed for search for bands and artist, and getting
+            information from everything from Concerts in that area to tickets and concert info. 
+            The app also gives you Music to listen to by that artist to discover their music, 
+            or even listen to your fav's. RockOut is your one stop for all artist info.</h3>
           </div>
 
           <br><br>
@@ -94,19 +93,19 @@
   </section>
 
 
-  <section class="bg-light">
+  <section>
     <br><br>
 
     <div class="container" id="areaTwo">
-      <div class="row">
+      <div class="row" id="areaTwo">
         <div class="col-lg-8 mx-auto" id="areaTwo" style="background:transparent url('images/sd.jpg') no-repeat center center /cover">
           <h2>Search Artist & City</h2>
           <p class="lead">Just search for the artist your intrested in, and the city you are looking in, and let us do
             the rest!</p>
           <form>
-            <div class="form-group">
+            <div class="form-group" id="areaTwo">
               <label for="searchInput1"><b>Band or Artist to search</b></label>
-              <input type="search" class="form-control" id="searchInput1" placeholder="Nirvana, Kenye West, Steve Aioki">
+              <input type="search" id="areaTwo" class="form-control" id="searchInput1" placeholder="Nirvana, Kenye West, Steve Aioki">
               <br>
 
               <label for="exampleFormControlSelect1"><b>Select a City</b></label>
@@ -123,7 +122,7 @@
 
 
 
-              <!-- Date section to be fixed and implemented    -->
+              <!-- Date section to be fixed and implemented -->
 
               <div class="container">
                 <div class="row">
@@ -141,7 +140,6 @@
 
                     <!-- <input type='text' class="dataepicker" data-date-format="mm/dd/yyyy" id='datetimepicker' placeholder="Select the date"/>
             </div>
-
             <script>
               $( function() {
                 $( "#datetimepicker" ).datepicker();
@@ -166,7 +164,7 @@
 
 
 
-                <button type="button" class="btn btn-primary btn-lg btn-block" id="searchButton">Search</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Search</button>
 
               </div>
 
@@ -196,7 +194,7 @@
                 <th scope="col">Get Tickets</th>
               </tr>
             </thead>
-            <tbody id="songKickTables">
+            <tbody>
               <tr>
 
                 <!-- this section is where will will append new tabe datta to by tows with info from songkick -->
@@ -225,14 +223,11 @@
 
   <section id="areaFour" class="bg-info">
 
+<!-- Plug in youtube API here -->
 
     <div class="container">
       <div class="row">
         <div class="col-lg-inline mx-auto text-center">
-
-<!-- Plug in youtube API here -->
-
-
           <div id="youTubeInsert" class="center-allign">
               <h1 class="lead">Here is popular music videos by your artist.</h1>
             <br>
@@ -263,19 +258,17 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">RockOut 2018</p>
+      <p class="m-0 text-center text-white">&copy;RockOut 2018</p>
     </div>
     <!-- /.container -->
   </footer>
   <script language="JavaScript" src="ts_picker.js"></script>
 
-  <!-- <script src="spotify.js"></script> -->
+  <script src="spotify.js"></script>
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
-<script language="Javascipt" src="backend.js"></script>
-<script language="Javascipt" src="youTube.js"></script>
 
 <script src="./backend.JS"></script>
 
