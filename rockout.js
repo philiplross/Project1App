@@ -33,4 +33,3 @@ $("#searchInput1").val(searchInput);
 console.log(searchInput)
 
 
-$()
