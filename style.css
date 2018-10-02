@@ -1,0 +1,71 @@
+body {
+    background-color: lightblue;
+    font-family: Helvetica, Arial, sans-serif;
+}
+#container {
+    background-color: lightblue;
+}
+
+#section {
+    background-color: lightblue;
+}
+
+.section {
+    background-color: lightblue;
+}
+
+#mainNav {
+    width: 100%;
+    float: left;
+    color: rgba(226, 226, 152, 0.1);
+    text-align: left;
+    background-color: transparent;
+}
+
+#navbarResponsive {
+    color: rgba(226, 226, 152, 0.1);
+}
+
+#areaOne {
+    color:rgb(226, 226, 152);
+    background-color: transparent;
+    text-size-adjust: auto;
+
+}
+
+#whatIs {
+    color: rgb(226, 226, 152);
+    /*color: white;*/
+    background-color: rgba(170, 165, 165,0.5);
+}
+
+#areaTwo {
+    color: rgb(226, 226, 152);
+    background-color: transparent;
+}
+
+#areaThree {
+    color: rgb(226, 226, 152);
+    background-color: grey;
+}
+
+#areaFour {
+    color: rgb(226, 226, 152);
+    background-color: transparent;
+}
+
+
+#searchInput1 {
+    color: black;
+    background-color: rgb(226, 226, 152);
+}
+
+#exampleFormControlSelect1 {
+    color: grey;
+    background-color: transparent;
+}
+
+
+
+
+
