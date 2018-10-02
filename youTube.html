@@ -11,6 +11,25 @@
     <script src="youTube.js"></script>
 </head>
 <body>
+    <!--new stuff-->
+    <input type="text" id="artist" />
+    <button id="submitButton" type="button">Search for Live Concert Experience!</button>
+    <!--new stuff-->
+    
     <ul class="ylist"></ul>
+
+
+    <script>
+            $(document).ready(function(){
+                $("#submitButton").click(function(){
+                    
+                    $('.ylist').empty();
+                    //put a loading gif or whatever inside .ylist
+
+                    var artist = $("#artist").val().trim();
+                    tubeIt(artist);
+                });
+            });
+    </script>
 </body>
 </html>
