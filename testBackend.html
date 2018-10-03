@@ -5,24 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>testBackend</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./backend.JS" ></script>
 </head>
 <body>
 
     <input type = "text" id = "songkickArtist" />
-    <button id = "submitButton" type ="button"> click me </button>
+    <button id ="searchButton" type ="button"> click me </button>
 
 <ul class="songkickTable"></ul>
-
+<div class="container" id="areaThree">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-center">Artist, Concert, Venue, & Ticket info</h2>
+            <p class="lead text-center">Here are your results with all the following information</p>
+  
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Artist</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Venue</th>
+                  <th scope="col">Get Tickets</th>
+                </tr>
+              </thead>
+              <tbody id="songkickTable" >
+                <tr>
+  
+                  <!-- this section is where will will append new tabe datta to by tows with info from songkick -->
+  
+  
+                  <th scope="row">_</th>
+                  <td id="dateAppend">_</td>
+                  <td id="venueAppend">_</td>
+                  <td id="ticketAppend">_</td>
+                </tr>
+  
+  
+  
+  
+  
+  
+  
+              </tbody>
+            </table>
+  
+          </div>
+        </div>
+      </div>
 <script>
 $(document).ready(function() {
     $("#searchButton").click(function() {
+        console.log("search button clicked");
+        $('#songkickTable').empty();
+        var artistName = $("#songkickArtist").val().trim();
+        //call songkick to get artist id
+        //var getUrl = "https://api.songkick.com/api/3.0/artists/" + artistId + "/gigography.json?apikey=" + apiKey + "&order=desc&per_page=10";
+        var apiKey = "eXBGBqHJ9N9zfC95";
+        var getUrl = "https://api.songkick.com/api/3.0/search/artists.json?apikey="+apiKey+"&query="+artistName;
 
-        $('.songkickTable').empty();
-    var artistId = $("#songkickArtist").val().trim();
-    songkickGo (artistId);
+
+        $.ajax({
+            url: getUrl,
+            method: "Get"
+        }).done(function (apiResponse) {
+            console.log('full api response ', apiResponse);
+            var artistId = apiResponse.resultsPage.results.artist[0].id;
+            var artistNameFromApi = apiResponse.resultsPage.results.artist[0].displayName;
+            songkickGo(artistId, artistNameFromApi);
     });
     
-});
+}); //end search
+});//end onready
 
 </script>
     
