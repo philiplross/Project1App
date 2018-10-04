@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="youTube.css">
 
   <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 </head>
@@ -237,10 +238,29 @@
     
 <!-- place holder youtube for sizing and UI adjustments -->
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hHW1oY26kxQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/hHW1oY26kxQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
 
 
+<input type="text" id="artist" />
+    <button id="submitButton" type="button">Search for Live Concert Experience!</button>
+    <!--new stuff-->
+    
+    <ul class="ylist"></ul>
 
+    <script>
+            $(document).ready(function(){
+                $("#submitButton").click(function(){
+                    
+                    $('.ylist').empty();
+                    //put a loading gif or whatever inside .ylist
+                    var artist = $("#artist").val().trim();
+                    tubeIt(artist);
+                });
+            });
+    </script>
+      <div class="loader">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
 
 
             <!-- Youtube music plug in goes in this div container for new elemenets using the youTubeInsert ID -->
@@ -271,6 +291,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
+    <script src="youTube.js"></script>
 
 <script src="./backend.JS"></script>
 
@@ -300,6 +321,8 @@
     });//end onready
     
     </script>
+
+    
         
 </body>
 
