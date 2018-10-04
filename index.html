@@ -105,7 +105,7 @@
           <form>
             <div class="form-group" id="areaTwo">
               <label for="searchInput1"><b>Band or Artist to search</b></label>
-              <input type="search" id="areaTwo" class="form-control" id="searchInput1" placeholder="Nirvana, Kenye West, Steve Aioki">
+              <input type="search" class="form-control" id="searchInput1" placeholder="Nirvana, Kenye West, Steve Aioki">
               <br>
 
               <label for="exampleFormControlSelect1"><b>Select a City</b></label>
@@ -164,7 +164,7 @@
 
 
 
-                <button type="button" class="btn btn-primary btn-lg btn-block">Search</button>
+                <button type="button" id="searchButton" class="btn btn-primary btn-lg btn-block">Search</button>
 
               </div>
 
@@ -194,7 +194,7 @@
                 <th scope="col">Get Tickets</th>
               </tr>
             </thead>
-            <tbody >
+            <tbody  id="songkickTable" >
               <tr>
 
                 <!-- this section is where will will append new tabe datta to by tows with info from songkick -->
@@ -272,6 +272,33 @@
 
 <script src="./backend.JS"></script>
 
+<script>
+    $(document).ready(function() {
+        $("#searchButton").click(function() {
+            console.log("search button clicked");
+            $('#songkickTable').empty();
+            var artistName = $("#searchInput1").val().trim();
+            //call songkick to get artist id
+            //var getUrl = "https://api.songkick.com/api/3.0/artists/" + artistId + "/gigography.json?apikey=" + apiKey + "&order=desc&per_page=10";
+            var apiKey = "eXBGBqHJ9N9zfC95";
+            var getUrl = "https://api.songkick.com/api/3.0/search/artists.json?apikey="+apiKey+"&query="+artistName;
+    
+          //api call
+            $.ajax({
+                url: getUrl,
+                method: "Get"
+            }).done(function (apiResponse) {
+                console.log('full api response ', apiResponse);
+                var artistId = apiResponse.resultsPage.results.artist[0].id;
+                var artistNameFromApi = apiResponse.resultsPage.results.artist[0].displayName;
+                songkickGo(artistId, artistNameFromApi);
+        });
+        
+    }); //end search
+    });//end onready
+    
+    </script>
+        
 </body>
 
 </html>
