@@ -14,7 +14,7 @@ method: 'GET'
 console.log("results.items from YouTube api: ",results.items);   
 var videos = results.items; 
 for(i = 0;i<videos.length;i++) {
-$('.ylist').append('<li><iframe id="player" type="text/html" width="640" height="390"   src="http://www.youtube.com/embed/'+videos[i].id.videoId +'?enablejsapi=1" frameborder="0"></iframe></li>')
+$('.ylist').append('<li><iframe id="player" type="text/html" width="640" height="390"   src="https://www.youtube.com/embed/'+videos[i].id.videoId +'?enablejsapi=1" frameborder="0"></iframe></li>')
 }
 });
 }
